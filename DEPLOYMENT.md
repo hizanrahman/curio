@@ -26,15 +26,15 @@ provided through the dashboards.
 
    | Env var | Value |
    |---|---|
-   | `OPENAI_API_KEY` | your bazaarlink API key |
+   | `OPENAI_API_KEY` | your OpenRouter API key (`sk-or-v1-…`) |
    | `SUPABASE_URL` | `https://<project>.supabase.co` |
    | `SUPABASE_ANON_KEY` | Supabase → Settings → API → anon/public key |
    | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Settings → API → service_role key |
    | `API_ALLOWED_ORIGINS` | your Vercel URL, e.g. `https://curio.vercel.app` (comma-separated for multiple) |
 
    The rest are pre-filled by the blueprint:
-   `OPENAI_BASE_URL=https://api.bazaarlink.ai/v1`, `OPENAI_MODEL=qwen/qwen3.7-flash:free`,
-   `OPENAI_VISION_MODEL=qwen/qwen3.7-flash:free`, `PYTHON_VERSION=3.12.8`.
+   `OPENAI_BASE_URL=https://openrouter.ai/api/v1`, `OPENAI_MODEL=qwen/qwen3.7-flash`,
+   `OPENAI_VISION_MODEL=qwen/qwen3.7-flash`, `PYTHON_VERSION=3.12.8`.
 
 3. Deploy. Verify: `curl https://<service>.onrender.com/` → `{"status":"ok"}`.
 

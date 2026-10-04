@@ -11,8 +11,8 @@ from pydantic import ValidationError
 env_path = os.path.join(os.path.dirname(__file__), "..", ".env")
 load_dotenv(env_path)
 
-DEFAULT_BASE_URL = "https://api.bazaarlink.ai/v1"
-DEFAULT_MODEL = "qwen/qwen3.7-flash:free"
+DEFAULT_BASE_URL = "https://openrouter.ai/api/v1"
+DEFAULT_MODEL = "qwen/qwen3.7-flash"
 logger = logging.getLogger(__name__)
 
 
@@ -207,7 +207,7 @@ def generate_tutor_response(
 ) -> TutorResponse:
     """
     Core AI Tutor Logic Pipeline using an OpenAI-compatible API
-    (default base URL: https://api.bazaarlink.ai/v1).
+    (default base URL: https://openrouter.ai/api/v1).
     """
     client = _get_client()
     if client is None:

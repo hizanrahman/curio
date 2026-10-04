@@ -12,11 +12,11 @@ services:
       - key: OPENAI_API_KEY
         sync: false
       - key: OPENAI_BASE_URL
-        value: https://api.bazaarlink.ai/v1
+        value: https://openrouter.ai/api/v1
       - key: OPENAI_MODEL
-        value: qwen/qwen3.7-flash:free
+        value: qwen/qwen3.7-flash
       - key: OPENAI_VISION_MODEL
-        value: qwen/qwen3.7-flash:free
+        value: qwen/qwen3.7-flash
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_ANON_KEY

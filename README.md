@@ -60,9 +60,9 @@ editable review before the session starts.
 Create a `.env` file in the `backend/` directory:
 ```env
 OPENAI_API_KEY=your_key_here
-OPENAI_BASE_URL=https://api.bazaarlink.ai/v1
-OPENAI_MODEL=qwen/qwen3.7-flash:free
-OPENAI_VISION_MODEL=qwen/qwen3.7-flash:free
+OPENAI_BASE_URL=https://openrouter.ai/api/v1
+OPENAI_MODEL=qwen/qwen3.7-flash
+OPENAI_VISION_MODEL=qwen/qwen3.7-flash
 SUPABASE_URL=your_supabase_url
 SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key

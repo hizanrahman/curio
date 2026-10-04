@@ -44,7 +44,7 @@ def _vision_client() -> AsyncOpenAI:
         )
     return AsyncOpenAI(
         api_key=api_key,
-        base_url=os.environ.get("OPENAI_BASE_URL", "https://api.bazaarlink.ai/v1"),
+        base_url=os.environ.get("OPENAI_BASE_URL", "https://openrouter.ai/api/v1"),
     )
 
 
@@ -70,7 +70,7 @@ async def _read_image_with_vision(image_bytes: bytes, content_type: str) -> str:
     image_url = f"data:{content_type};base64,{base64.b64encode(image_bytes).decode('ascii')}"
     try:
         response = await client.chat.completions.create(
-            model=os.environ.get("OPENAI_VISION_MODEL", os.environ.get("OPENAI_MODEL", "qwen/qwen3.7-flash:free")),
+            model=os.environ.get("OPENAI_VISION_MODEL", os.environ.get("OPENAI_MODEL", "qwen/qwen3.7-flash")),
             messages=[
                 {
                     "role": "user",
