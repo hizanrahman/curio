@@ -1,0 +1,296 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@config "../tailwind.config.js";
+
+:root {
+  color-scheme: light;
+  --bg: #fff8ec;
+  --surface: #ffffff;
+  --ink: #17171c;
+  --muted: #5e5e6b;
+  --primary: #6c5ce7;
+  --primary-ink: #ffffff;
+  --yellow: #ffd84d;
+  --mint: #7adfb5;
+  --coral: #ff8a7a;
+  --sky: #8cc8ff;
+  --lilac: #c9b8ff;
+  --status-neutral: #64646e;
+  --border: #17171c;
+  --input: #ffffff;
+  --ring: #6c5ce7;
+  --destructive: #a82f22;
+  --destructive-ink: #ffffff;
+  --card: #ffffff;
+  --card-ink: #17171c;
+  --popover: #ffffff;
+  --popover-ink: #17171c;
+  --secondary: #f3eddf;
+  --secondary-ink: #17171c;
+  --accent: #eee8ff;
+  --accent-ink: #342789;
+  --radius: 16px;
+  --radius-control: 12px;
+  --shadow-hard: 4px 4px 0 var(--ink);
+  --shadow-hard-hover: 6px 6px 0 var(--ink);
+  --focus-ring: 0 0 0 3px var(--surface), 0 0 0 6px var(--primary);
+  --motion-duration: 180ms;
+  --motion-stagger: 70ms;
+  --motion-entrance: 500ms;
+  --motion-ease: ease-out;
+  --font-body: "Inter Variable", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Inter Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --page-width: 1200px;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-ink);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-yellow: var(--yellow);
+  --color-mint: var(--mint);
+  --color-coral: var(--coral);
+  --color-sky: var(--sky);
+  --color-lilac: var(--lilac);
+  --color-status-neutral: var(--status-neutral);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-ink);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-ink);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-ink);
+  --color-muted: var(--secondary);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-ink);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-ink);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-lg: var(--radius);
+  --radius-md: var(--radius-control);
+  --radius-sm: 8px;
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    min-width: 320px;
+    background: var(--bg);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    background-image: radial-gradient(rgb(23 23 28 / 0.06) 0.7px, transparent 0.7px);
+    background-size: 16px 16px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 4px;
+  }
+
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  a {
+    touch-action: manipulation;
+  }
+
+  ::selection {
+    color: var(--primary-ink);
+    background: var(--primary);
+  }
+}
+
+@layer components {
+  .page-shell {
+    width: min(calc(100% - 32px), var(--page-width));
+    margin-inline: auto;
+  }
+
+  .theme-card {
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-hard);
+  }
+
+  .theme-card-interactive {
+    transition: transform var(--motion-duration) var(--motion-ease);
+  }
+
+  .theme-card-interactive:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-hover);
+  }
+
+  .theme-button {
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-control);
+    box-shadow: var(--shadow-hard);
+    transition: transform var(--motion-duration) var(--motion-ease);
+  }
+
+  .theme-button:hover:not(:disabled) {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-hover);
+  }
+
+  .theme-button:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--ink);
+  }
+
+  .theme-input {
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+  }
+
+  .theme-button:focus-visible,
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 3px solid var(--primary) !important;
+    outline-offset: 3px;
+    box-shadow: var(--focus-ring) !important;
+  }
+
+  .sticker-chip {
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    background: var(--yellow);
+    color: var(--ink);
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .signature-highlight {
+    position: relative;
+    z-index: 0;
+    white-space: nowrap;
+  }
+
+  .signature-highlight::after {
+    position: absolute;
+    z-index: -1;
+    right: -0.08em;
+    bottom: 0.02em;
+    left: -0.08em;
+    height: 0.34em;
+    border-radius: 999px;
+    background: var(--yellow);
+    content: "";
+    transform: rotate(-1.4deg);
+  }
+
+  .chat-reading-surface {
+    background: var(--surface);
+    border: 2px solid var(--ink);
+    border-radius: 20px;
+  }
+
+  .react-flow {
+    --xy-background-color: var(--surface);
+    --xy-node-color: var(--ink);
+    --xy-edge-stroke: var(--ink);
+    --xy-edge-stroke-selected: var(--primary);
+    --xy-node-border: var(--ink);
+    --xy-attribution-background-color: var(--surface);
+  }
+
+  .soft-scrollbar {
+    scrollbar-color: var(--lilac) transparent;
+    scrollbar-width: thin;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .entrance-rise {
+    animation: entrance-rise var(--motion-entrance) var(--motion-ease) both;
+  }
+
+  .stagger-1 { animation-delay: var(--motion-stagger); }
+  .stagger-2 { animation-delay: calc(2 * var(--motion-stagger)); }
+  .stagger-3 { animation-delay: calc(3 * var(--motion-stagger)); }
+  .stagger-4 { animation-delay: calc(4 * var(--motion-stagger)); }
+
+  .solved-confetti-piece {
+    position: absolute;
+    top: -12px;
+    width: 8px;
+    height: 12px;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    animation: confetti-pop 1100ms var(--motion-ease) both;
+  }
+
+  .solved-confetti-piece:nth-child(1) { left: 8%; background: var(--yellow); animation-delay: 20ms; }
+  .solved-confetti-piece:nth-child(2) { left: 21%; background: var(--mint); animation-delay: 80ms; }
+  .solved-confetti-piece:nth-child(3) { left: 37%; background: var(--coral); animation-delay: 40ms; }
+  .solved-confetti-piece:nth-child(4) { left: 53%; background: var(--sky); animation-delay: 120ms; }
+  .solved-confetti-piece:nth-child(5) { left: 68%; background: var(--lilac); animation-delay: 60ms; }
+  .solved-confetti-piece:nth-child(6) { left: 83%; background: var(--yellow); animation-delay: 100ms; }
+}
+
+@keyframes entrance-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes confetti-pop {
+  0% { opacity: 0; transform: translateY(-8px) rotate(-20deg); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(34px) rotate(70deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .solved-confetti-piece {
+    display: none;
+  }
+}

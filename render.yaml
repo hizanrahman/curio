@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: curio-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_BASE_URL
+        value: https://api.bazaarlink.ai/v1
+      - key: OPENAI_MODEL
+        value: qwen/qwen3.7-flash:free
+      - key: OPENAI_VISION_MODEL
+        value: qwen/qwen3.7-flash:free
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: API_ALLOWED_ORIGINS
+        sync: false
